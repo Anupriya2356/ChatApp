@@ -20,6 +20,10 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
+app.get("/", (_, res) => {
+  res.json({ message: "Chat App Backend is running" });
+});
+
 // make ready for deployment
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
